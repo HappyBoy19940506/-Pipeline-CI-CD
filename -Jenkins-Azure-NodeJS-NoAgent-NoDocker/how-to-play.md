@@ -1,6 +1,31 @@
 # -freestyle-Jenkins-Azure-NodeJS-NoAgent-NoDocker/
 
 # Work flow
-* 1
-* 2
+* Azure VM to host Jenkins
+  * create
+  * DNS
+  * port open
+  * 
+  
+* VM configuration
+  * ssh to VM
+  * install jenkins
+  *. 
+  
+* Manage Jenkins
+  * user/group
+  * plugin -blue ocean
+  * reverse proxy broken??
+  * 
 
+  
+* connect to GitHub Repo blue Ocean for multi-branches
+  * use webhook (No) or token (yes) ?
+  * skip indexing?
+  * Jenkinsfile
+  * 
+* the application ( On jenkins locally and no docker atm)
+  * nodeJS -  npm ? package install ?
+  * how to run nodejs test
+  * how to run nodejs
+  *  
