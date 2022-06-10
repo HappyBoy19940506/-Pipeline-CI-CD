@@ -14,7 +14,7 @@
   * home directory need to relocate? 
   
 * Manage Jenkins
-  * user/group
+  * user/group/role --permission assign
   * plugin -blue ocean
   * reverse proxy broken??
   * 
