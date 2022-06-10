@@ -11,6 +11,7 @@
   * ssh to VM
   * install java beacause of jenkins
   * install jenkins
+  * home directory need to relocate? 
   
 * Manage Jenkins
   * user/group
