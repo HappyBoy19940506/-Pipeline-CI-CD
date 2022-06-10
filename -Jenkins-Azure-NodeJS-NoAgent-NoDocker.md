@@ -24,7 +24,7 @@
   * use webhook (No) or token (yes) ?
   * skip indexing?
   * where is the Jenkinsfile
-  * <SET Scan Repo Trigger PERIODCALLY to see whether branch has changed in settings of Blue Ocean>
+  * !!!SET Scan Repo Trigger PERIODCALLY to see whether branch has changed in settings of Blue Ocean!!!
 
 
 
