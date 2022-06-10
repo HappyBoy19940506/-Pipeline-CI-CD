@@ -9,8 +9,8 @@
   
 * VM configuration
   * ssh to VM
+  * install java beacause of jenkins
   * install jenkins
-  *. 
   
 * Manage Jenkins
   * user/group
