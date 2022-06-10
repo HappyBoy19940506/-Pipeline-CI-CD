@@ -24,7 +24,10 @@
   * use webhook (No) or token (yes) ?
   * skip indexing?
   * where is the Jenkinsfile
-  * 
+  * <SET Scan Repo Trigger PERIODCALLY to see whether branch has changed in settings of Blue Ocean>
+
+
+
 * the application ( On jenkins locally and no docker atm)
   * nodeJS -  npm ? package install ?
   * how to run nodejs test
