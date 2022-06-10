@@ -5,7 +5,7 @@
   * create
   * DNS
   * port open
-  * 
+  * allow speficic IP address to acess VM (my own IP address)
   
 * VM configuration
   * ssh to VM
