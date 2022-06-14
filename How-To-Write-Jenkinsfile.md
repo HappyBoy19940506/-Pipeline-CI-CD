@@ -1,4 +1,4 @@
-# 1
+# 1 https://github.com/HappyBoy19940506/ApiJenkinsSolution
 ```
 pipeline {
     agent any
@@ -7,31 +7,37 @@ pipeline {
         stage('Git checkout') {
             steps{
                 // Get source code from a GitHub repository
+                git branch:'main', url:'https://github.com/Azure-Samples/openhack-devops-team.git'
             }
         }
         
-        stage('Build') {
+        stage('npm install') {
             steps{
-                // Do your build task
+                dir("./apis/userprofile/") {
+                    sh 'npm install'
+                }
             }
         }
         
-        stage('Test') {
+        stage('Tests') {
             steps{
-                // Run unit tests, integration tests, and/or e2e tests
+                dir("./apis/userprofile/") {
+                    sh 'npm test'
+                }
             }
         }
         
-        stage('Publish') {
+        stage('npm coverage') {
             steps{
-                // Publish your artifacts to somewhere.
-                // However, in our hands-on, you just need to print the artifact list by Linux command 'ls -la'
+                dir("./apis/userprofile/") {
+                    sh 'npm run cover'
+                }
             }
         }
 
-        post {
-            always { 
-                echo 'I will always say Hello again!'
+        stage('Publish') {
+            steps{
+                sh 'ls -la ./apis/userprofile/'
             }
         }
     }
