@@ -16,8 +16,8 @@ PATCH：这个版本号变化了表示修复了bug，并且可以向后兼容。
 
 因为major version变化表示可能会影响之前版本的兼容性，所以无论是波浪符号还是插入符号都不会自动去修改major version，因为这可能导致程序crush，可能需要手动修改代码。
 ————————————————
-版权声明：本文为CSDN博主「nj物是人非」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/njweiyukun/article/details/70309066
-  
+
+dockerfile里引入的 node version == local环境下的本机node version， 一定要 >=  package.json中的版本， 选最新lts版就行，一般向后兼容。
+
   
   ```
