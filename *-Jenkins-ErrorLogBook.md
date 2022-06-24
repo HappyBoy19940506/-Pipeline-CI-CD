@@ -450,7 +450,7 @@ https://www.youtube.com/watch?v=g2TSOIKzVUI&t=768s
  echo"you have successfully passed the testing process: \n project name:${PROJECT_NAME}"
 ```
 ----------------------------------------------------
-# 21. Jenkinsfile中的变量引用。
+# 21. Jenkinsfile中的env.variable变量引用。
 
 ```
 您可以在通过env对象的管道步骤中访问环境变量，例如，env.BUILD_NUMBER将返回当前的内部版本号。
@@ -483,15 +483,26 @@ pipeline {
 
 1. environment里定义，下面 ${}调用
 2.要用双引号
-```
-----------------------------------------------------
-# 3. 
+
+https://blog.51cto.com/devopsvip/3183551
 
 ```
-Grs/jso
-```
+----------------------------------------------------
+# 22. Jenkinsfile中的parameters用法。
+
 ## Resolved: 
 ```
+https://devopscube.com/declarative-pipeline-parameters/
+
+jenkinsfile Parameter Best Practices
+The following are some of the best practices you can follow while using parameters in a Jenkinsfile.
+
+Never pass passwords in the String or Multi-line parameter block. Instead, use the password parameter of access Jenkins credentials with credential id as the parameter.
+
+Try to use parameters only if required. Alternatively, you can use a config management tool to read configs or parameters in the runtime.
+
+Handle the wrong parameter execution in the stages with a proper exception handling. It avoids unwanted step execution when a wrong parameter is provided. It happens typically in multi-line and string parameters.
+
 ```
 ----------------------------------------------------
 # 3. 
