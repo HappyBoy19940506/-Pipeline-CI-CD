@@ -435,30 +435,54 @@ https://www.youtube.com/watch?v=g2TSOIKzVUI&t=768s
 
 ```
 ----------------------------------------------------
-# 19. 如何在echo中引用变量
+# 19. 如何在echo中引用变量${var}
 ## Resolved: 
 ```
-要用双引号，e.g. you have successfully passed the testing process: \n project name:${PROJECT_NAME}
+要用双引号，e.g. echo"you have successfully passed the testing process: \n project name:${PROJECT_NAME}"
 
 单引号没用的 .
 ```
 ----------------------------------------------------
-# 3. 
+# 20. echo中如何换行?
 
-```
-Grs/jso
-```
 ## Resolved: 
 ```
+ echo"you have successfully passed the testing process: \n project name:${PROJECT_NAME}"
 ```
 ----------------------------------------------------
-# 3. 
+# 21. Jenkinsfile中的变量引用。
 
 ```
-Grs/jso
+您可以在通过env对象的管道步骤中访问环境变量，例如，env.BUILD_NUMBER将返回当前的内部版本号。
+
+您也可以使用简写版本BUILD_NUMBER，但是在此变体中，这可能会使某些用户感到困惑-它缺少BUILD_NUMBER来自环境变量的上下文。
+
 ```
 ## Resolved: 
 ```
+pipeline {
+    agent {
+        label '!windows'
+    }
+
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Database engine is ${DB_ENGINE}"
+                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                sh 'printenv'
+            }
+        }
+    }
+}
+
+1. environment里定义，下面 ${}调用
+2.要用双引号
 ```
 ----------------------------------------------------
 # 3. 
