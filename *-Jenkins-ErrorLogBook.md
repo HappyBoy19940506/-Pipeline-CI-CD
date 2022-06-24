@@ -425,22 +425,22 @@ https://www.youtube.com/watch?v=99DddJiH7lM
 2. 一般 agent上放几个exectuors，取决于额有几个cpu或者vcpu,数量 小于等于。
 ```
 ----------------------------------------------------
-# 3. 
+# 18. 如何使用 smtp服务在 jenkinsfile中发送cicd结果
 
-```
-Grs/jso
-```
 ## Resolved: 
 ```
+https://www.youtube.com/watch?v=CGSwDpDfEMw
+https://www.youtube.com/watch?v=7y-2MzSjjeo
+https://www.youtube.com/watch?v=g2TSOIKzVUI&t=768s
+
 ```
 ----------------------------------------------------
-# 3. 
-
-```
-Grs/jso
-```
+# 19. 如何在echo中引用变量
 ## Resolved: 
 ```
+要用双引号，e.g. you have successfully passed the testing process: \n project name:${PROJECT_NAME}
+
+单引号没用的 .
 ```
 ----------------------------------------------------
 # 3. 
