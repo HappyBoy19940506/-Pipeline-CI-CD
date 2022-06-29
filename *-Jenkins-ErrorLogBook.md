@@ -505,13 +505,48 @@ Handle the wrong parameter execution in the stages with a proper exception handl
 
 ```
 ----------------------------------------------------
-# 3. 
+# 23.  关于ci的一些观念改变。
 
 ```
-Grs/jso
+以前我以为ci是在merge之前 也就是 pull request创建的时候 开始做的，但是一细想不对啊， 他还没有代码push更新，跑ci有什么用？
+而且这也不符合ppline的逻辑。
 ```
 ## Resolved: 
 ```
+1. 就是 push之后才会触发ci ， dev分支的代码就是会在push或者merge完成后才会触发 dev的ci，
+
+如果CI失败，则所有人应该分析错误， 相关人员应该拉取一个修复分支（相当于feature分支），进行修复并提交代码，合并到develop分支，直到develop分支ci变绿，变绿之前，所有人不能合并其他任何feature分支。
+
+如果CI成功，则相关的节点会有相关的发布包被push到二进制仓库，并且打上 “snapshot-commit号“标签。
+
+比如：今天打开dev-branch发现3个merge request，第一个 reivew了，没问题，通过merge，然后ci触发，显示成功，没问题
+第二个，review了，没问题，merge进去之后，发来log，报错了，这时候应该 解决这个ci问题。
+第三个pr，就晾着，别来添乱。你如果再加入第三个就乱了，也不知道是第二个错还是第三个错了。
+	
+2. Feature分支上的持续集成
+开发者在feature分支上push代码后执行， 包括：代码质量检查， 代码静态扫描，单元测试，程序编译。
+
+如果CI失败，feature分支上的相关程序员需要修复相关的问题，如果上次提交的pipeline没有执行完成，开发者提交了新的代码，则老的pipeline停止， 新的pipeline包括了上次的所有代码提交的持续集成检查。
+
+如果CI成功，则可以发次MR进行代码review。 代码review的时候，review人员可以参考Feature分支上的CI结果。
+
+具体操作：-------------------->
+
+git 插件的 Branch Specifier (blank for 'any') 一般默认写的是*/master 是部署的 master 分支，可以改成对应的分支就能部署分支了
+
+分支选择里填 */feature/*,然后 CI/CD 会拉取最近的一次提交
+
+<Wildcards>
+The syntax is of the form: REPOSITORYNAME/BRANCH. In addition, BRANCH is recognized as a shorthand of */BRANCH, '*' is recognized as a wildcard, and '**' is recognized as wildcard that includes the separator '/'. Therefore, origin/branches* would match origin/branches-foo but not origin/branches/foo, while origin/branches** would match both origin/branches-foo and origin/branches/foo.
+------------------>
+
+https://www.v2ex.com/t/523861
+
+https://blog.csdn.net/xiphi_6/article/details/122968094
+
+https://testerhome.com/topics/27657?order_by=like&
+
+
 ```
 ----------------------------------------------------
 # 3. 
