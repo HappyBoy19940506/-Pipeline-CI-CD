@@ -432,7 +432,7 @@ https://www.youtube.com/watch?v=99DddJiH7lM
 https://www.youtube.com/watch?v=CGSwDpDfEMw
 https://www.youtube.com/watch?v=7y-2MzSjjeo
 https://www.youtube.com/watch?v=g2TSOIKzVUI&t=768s
-
+https://www.youtube.com/watch?v=OOCvCdZLAhc
 ```
 ----------------------------------------------------
 # 19. 如何在echo中引用变量${var}
