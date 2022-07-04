@@ -371,7 +371,7 @@ https://www.youtube.com/watch?v=99DddJiH7lM
 1. 打开master和slave的22port
 2. 随便哪个地方创建一堆密钥: ssh-keygen  filename比如叫 jenkins-ssh-key 
 3. 私钥 上传至Jenkins credentials， kind选择ssh username with private key, id随便叫 会显示在后面的keychain里面，就是credentials的名字，username随便叫，会显示在后续的选择下拉框里面，
-4. 公钥存在 slave上， vi ~/.ssh/authorized_keys ,把公钥加入， wq保存退出
+4. **************公钥存在 slave上， vi ~/.ssh/authorized_keys ,把公钥加入， wq保存退出***********老是忘记！
 5.  Master controller上要装java, 再装jenkins, slave node上要装 java ！！！不然读不到remoting.jar
 5.  manage nodes and clouds -- new node --往下一步步填，特别注意Remote root directory项
 ```
