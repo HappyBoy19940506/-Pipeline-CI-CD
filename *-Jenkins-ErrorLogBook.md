@@ -556,6 +556,11 @@ https://testerhome.com/topics/27657?order_by=like&
 ```
 ## Resolved: 
 ```
+1. java
+2. jenkins
+3. systemctl status jenkins
+4. sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
 ```
 ----------------------------------------------------
 # 3. 
