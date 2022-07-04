@@ -575,7 +575,7 @@ https://testerhome.com/topics/27657?order_by=like&
    1. CloudBees AWS Credentials
    2.  Amazon Web Services SDK :: All
    2. docker for pipeline
-   3. nodejs plugin - used for global configuration
+   3. nodejs plugin - used for global configuration 顺便去设置一下版本哈！
    4. blue ocean 
    5. Email Extension Plugin
 	
