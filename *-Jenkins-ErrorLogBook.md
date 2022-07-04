@@ -563,13 +563,23 @@ https://testerhome.com/topics/27657?order_by=like&
 
 ```
 ----------------------------------------------------
-# 3. 
+# 25. 初始化jenkins要做的一些准备 
 
 ```
-Grs/jso
+
 ```
 ## Resolved: 
 ```
+1. security group 开放 20 ，8080，50000端口
+2. plugin
+   1. CloudBees AWS Credentials
+   2.  Amazon Web Services SDK :: All
+   2. docker for pipeline
+   3. nodejs plugin - used for global configuration
+   4. blue ocean 
+   5. Email Extension Plugin
+	
+3. agent -go to #13
 ```
 ----------------------------------------------------
 
