@@ -549,10 +549,10 @@ https://testerhome.com/topics/27657?order_by=like&
 
 ```
 ----------------------------------------------------
-# 3. 
+# 24. EC2 上装Jenkins
 
 ```
-Grs/jso
+(https://github.com/HappyBoy19940506/JR-DevOpsNotes/tree/master/WK4_Jenkins/Wk4.2/1.Jenkins-Installation-on-Ubuntu)
 ```
 ## Resolved: 
 ```
