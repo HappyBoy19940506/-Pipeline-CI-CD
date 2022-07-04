@@ -580,9 +580,11 @@ https://testerhome.com/topics/27657?order_by=like&
    5. Email Extension Plugin
 	
 3. agent -go to #13
+  ( ssh-keygen -t rsa )
 
 4 . docker ( if you are on agent) -
 	https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu
+	
 
 ```
 ----------------------------------------------------
