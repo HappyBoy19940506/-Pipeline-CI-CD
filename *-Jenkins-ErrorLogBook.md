@@ -580,6 +580,10 @@ https://testerhome.com/topics/27657?order_by=like&
    5. Email Extension Plugin
 	
 3. agent -go to #13
+
+4 . docker ( if you are on agent) -
+	https://docs.docker.com/engine/install/ubuntu/
+
 ```
 ----------------------------------------------------
 
