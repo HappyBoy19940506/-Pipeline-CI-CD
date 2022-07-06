@@ -431,7 +431,7 @@ https://www.youtube.com/watch?v=99DddJiH7lM
 ```
 1. 在SES中申请 邮箱的identity， 并且邮件验证 ，获得stmp服务器dns， ---> 下面aws会帮你用fxy@gmail.com的邮箱来发送消息。
 2.去Jenkins里设置admin邮箱为： System Admin e-mail address -> Jenkins Do Not Reply <fxy4560654@gmail.com> 
-   前面一部分 是说 发送的时候的抬头，后面一部分填写你 stmp邮箱 - 相当于 你现在使用这个stmp邮箱在Jenkins上用aws来发邮件。
+   前面一部分 是说 发送的时候的用户名，比如 xiaoyu FAN<fxy456@gmail.com>，后面一部分填写你 stmp邮箱 - 相当于 你现在使用这个stmp邮箱在Jenkins上用aws来发邮件。
 3.设置extend email notification 各种 TLS, port 465, 以及 credentials等等，
 4. 这个credentials要去aws ese和iam中单独创建，并不是aws本身的access key
 
