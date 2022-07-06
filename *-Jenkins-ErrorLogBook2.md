@@ -1,9 +1,31 @@
 ----------------------------------------------------
-# 1. 
+# 1. nodejs- how to use Jest to test
 
 ## Resolved: 
-```
 
+```
+1. install jest
+    npm install --save-dev jest
+    
+    Using Babel
+  npm install --save-dev babel-jest @babel/core @babel/preset-env
+    
+   Using TypeScript
+  npm install --save-dev @babel/preset-typescript
+  
+2. npm run test
+  "scripts": {
+    "test": "jest"
+  }
+
+3. Code Coverage using Jest
+   npm test – –coverage
+
+
+https://blog.jmtalarn.com/running-node-js-react-tests-same-project/
+https://www.browserstack.com/guide/unit-testing-of-react-apps-using-jest
+https://juejin.cn/post/7049536297584558087
+https://jestjs.io/docs/getting-started
 ```
 ----------------------------------------------------
 ----------------------------------------------------
