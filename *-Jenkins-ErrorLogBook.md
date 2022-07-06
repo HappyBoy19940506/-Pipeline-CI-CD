@@ -317,7 +317,7 @@ create 一个新的pipeline的时候，会创建一个新的workspace，每次bu
 
 ## Resolved: 
 ```
-如果是新建的pipeline，新建时候设置了trigger webhook，并且github settings也设置了，第一次build 如果是auto webhook的话不 生效，也就是说 要手动build一次，后面才会自动hook触发。
+如果是新建的pipeline，新建时候设置了trigger webhook，并且github settings也设置了，第一次build 如果是auto webhook的话不 生效，也就是说 要手动build一次，后面才会自动hook触发。 并且要手动build 起码成功1次， webhook才会生效。
 
 原理： webhook只会发送post请求给jerkins server，但jenkenis并不知道是哪条pipeline会执行这条post，要手动build第一次，养成良好习惯。
 
