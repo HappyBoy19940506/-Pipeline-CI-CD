@@ -9,6 +9,10 @@ just open terminal and type this command // 在运行docker的那个agent里面 
 
 sudo chmod 666 /var/run/docker.sock
 
+chmod 666 file/folder means that all users can read and write but cannot execute the file/folder;
+chmod 777 file/folder allows all actions for all users;
+chmod 744 file/folder allows only user (owner) to do all actions; group and other users are allowed only to read.
+
 ```
 https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
 
