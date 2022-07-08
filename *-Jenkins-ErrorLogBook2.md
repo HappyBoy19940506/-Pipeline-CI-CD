@@ -49,7 +49,7 @@ https://jestjs.io/docs/getting-started
 
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 3. Use aws steps Plugin to upload files to s3.
 
 ## Resolved: 
 ```
