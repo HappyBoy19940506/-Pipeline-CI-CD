@@ -579,8 +579,8 @@ https://testerhome.com/topics/27657?order_by=like&
 ```
 1. security group 开放 20 ，8080，50000端口
 2. plugin
-   1. CloudBees AWS Credentials
-   2.  Amazon Web Services SDK :: All
+   1. CloudBees AWS Credentials + Pipeline:AWS STEPS
+   2. Amazon Web Services SDK :: All
    2. docker for pipeline
    3. nodejs plugin - used for global configuration 顺便去设置一下版本哈！
    4. blue ocean 
