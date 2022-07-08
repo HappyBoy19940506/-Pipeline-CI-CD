@@ -53,6 +53,34 @@ https://jestjs.io/docs/getting-started
 
 ## Resolved: 
 ```
+1. 按照pipeline：aws steps插件，这样 syntax就会出现 withAWS{ }
+2. 设置常规三个变量：
+        AWS_S3_CREDENTIALS = "AWS-Credentials-Root-AccessKey"
+        AWS_S3_REGION = "ap-southeast-2"
+        AWS_S3_BUCKET = "uat.happyboy.link"
+    其中 第一个credentials变量的值 其实是另一个变量（也就是Jenkins credentials）的名字，最终都指向了 一对 access key和  secret key
+    第二个 变量是区域， 第三个 bucket名字。
+   -一些情况下，你可以在environment的block中写 AWS_DEFAULT_REGION =XXX, AWS_ACCESS_KEY =XXX, 来直接给该机子上的这些变量赋值，这样就可以相当于config了aws，
+   -可以直接run aws命令了，但是这样坏处是暴露了密码，不安全。所以可以通过 withAWS -credentials的方法隐藏起来，不在jenkisifle中show出来，但是也可以赋上值。
+   
+3.               withAWS(credentials: "${AWS_S3_CREDENTIALS}", region: "${AWS_S3_CREDENTIALS}"){
+            // "${AWS_S3_CREDENTIALS}" 和 "${AWS_S3_CREDENTIALS}" 用双引号加上variable（前面预设了），来调用，这样的话，方便以后更改，
+            // 如果有变化，s3的步骤不变，只需要改变 三个aws变量的值就可以了，方便！
+                    sh'aws s3 ls'  //用来检测是否access key有用
+                    sh'pwd'
+                    // 代码中带了dir{ }所以 此时目录为 ./front_end/
+                    sh "aws s3 rm s3://${AWS_S3_BUCKET} --recursive"
+                    //清空 s3
+                    sh "aws s3 cp ./build s3://${AWS_S3_BUCKET} --recursive --acl bucket-owner-full-control"
+                    //上传文件，依次，acl disable
+                    //这种方式上传会把build文件夹下所以东西都依次上传，但是不带build folder本身，上传到 s3bucket的root 目录，方便你web hosting
+                    //如果你想要 上传整个folder，你需要写成： sh "aws s3 sync ./build s3://${AWS_S3_BUCKET}/build"也就是说用sync，并且你要提前也在s3里面写上build
+                    //文件夹
+                        }
+       
+       -其实这里可写成  withAWS(credentials: "AWS-Credentials-Root-AccessKey", region: AWS_S3_REGION){ -不方便修改Jenkins的credentials
+       -或者也可写成  withAWS(credentials: AWS_S3_CREDENTIALS, region: AWS_S3_REGION){   -有点晦涩，其实 "${x}"  在这里 可以直接写成 x
+       -或者也可写成  withAWS(credentials: "AWS-Credentials-Root-AccessKey", region: "ap-east-1"){ -全部用"x"，不方便后期修改
 
 ```
 ----------------------------------------------------
