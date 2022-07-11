@@ -143,11 +143,20 @@ https://stackoverflow.com/questions/45142855/bin-sh-apt-get-not-found
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 8.  how to uninstall Docker on Ubuntu
 
 ## Resolved: 
 ```
+有时候，也许需要删除docker，怎么卸载呢？
+如果你是通过snap安装，
+sudo snap disable docker
+sudo snap remove --purge docker
+如果你是正常安装apt：
+https://www.youtube.com/watch?v=3vBBzf0P9D8
 
+sudo apt-cache policy docker.io
+sudo apt purge docker.io
+sudo apt autoremove
 ```
 ----------------------------------------------------
 ----------------------------------------------------
