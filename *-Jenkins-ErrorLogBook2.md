@@ -424,12 +424,24 @@ when {
 https://www.jenkins.io/doc/book/pipeline/syntax/#when
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 18. Set a Timeout in a Jenkins Pipeline?
 
 ## Resolved: 
 ```
+     options {
+        timeout(time: 10, unit: 'SECONDS') 
+      }
+---- 和input/steps/when同一层级
 
+  options {
+    timeout(time: 7, unit: 'SECONDS') 
+  }
+ 或者放在 pipeline{}之下，和 agent tools stages 同一级别 - 相当于给整条build计时，超时就报错
+ 
+ --- input一定要配合timesout， global如果时间 小于 stage的timeout时间， 那么global到时间就直接结束了
+ 
 ```
+https://www.youtube.com/watch?v=OChOtpK0fUE
 ----------------------------------------------------
 ----------------------------------------------------
 # 1. 
