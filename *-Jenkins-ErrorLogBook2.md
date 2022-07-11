@@ -467,12 +467,49 @@ Note that -o, like most of unzip's options, has to go before the archive name.
 
 ```
 --------------------------------------------------------------------------------------------------------
-# 1. 
+# 20. 宇宙无敌之Nested Stages,套娃解决 Running Multiple Stages with the Same agent,
 
 ## Resolved: 
 ```
+假设现在有如下情景：
+1. 你需要input来进行确认，为了在等待期间 不造成堵塞，你必须使用global的 agent none
+2. 如此，你需要在stages-stage level中使用 agent 1.2.3
+3。 正好此时你需要用 agent -docker，出现的问题是： 如果你 每个stage中都写上agent-docker的话，在每个stage会独立创建单独的container，并不是在同一个容器内。
+    你只能把所有原先的stage的步骤 写到  1个stage的steps里面。
+4. 如何解决 ？？？
+  -用nested stage， 也就是 正常结构的 stages -[stage -steps]-[stage-steps],可以变成 stages -[stage -(这里加一套完整的pipeline结构，比如agent，stages，post）]-[stage-steps]
+  - 到达的效果： 在不同的stage内，运行同一个agent，如此，普通agent不需要挨个写上，docker-agent可以用同一个container。
+  
+  pipeline {
+    agent none
+    stages {
+        stage("build and test the project") {
+            agent {
+                docker "our-build-tools-image"
+            }
+            stages {
+               stage("build") {
+                   steps {
+                       sh "./build.sh"
+                   }
+               }
+               stage("test") {
+                   steps {
+                       sh "./test.sh"
+                   }
+               }
+            }
+            post {
+                success {
+                    stash name: "artifacts", includes: "artifacts/**/*"
+                }
+            }
+        }
+    }
+}
 
 ```
+https://www.jenkins.io/blog/2018/07/02/whats-new-declarative-piepline-13x-sequential-stages/#running-multiple-stages-with-the-same-agent-or-environment-or-options
 ----------------------------------------------------
 ----------------------------------------------------
 # 1. 
