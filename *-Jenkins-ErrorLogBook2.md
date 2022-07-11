@@ -108,18 +108,30 @@ https://jestjs.io/docs/getting-started
     unzip awscliv2.zip
     sudo ./aws/install
 3. 当然，你要保证 curl 和unzip 可以found，如果command not found，要安装。
-    比如。
+    比如。如果你按照的是 ubuntu20.04 基本上自带了 curl命令，如果没有，自行apt安装。
+        但是unzip这个命令正常情况下是不带的，要自己安装
+        https://www.tecmint.com/install-zip-and-unzip-in-linux/
+        -sudo apt install unzip
 
 
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 6. 
+# 6. 在docker image: node 12.16.0-apline 或者 某些操作系统中 apt-get: not found
 
 ## Resolved: 
 ```
 
+The image you're using is Alpine based, so you can't use apt-get because it's Ubuntu's package manager.
+
+To fix this just use:
+
+apk update and apk add
+
+https://stackoverflow.com/questions/45142855/bin-sh-apt-get-not-found
+
+只有在ubuntu环境下 才有apt命令
 ```
 ----------------------------------------------------
 ----------------------------------------------------
