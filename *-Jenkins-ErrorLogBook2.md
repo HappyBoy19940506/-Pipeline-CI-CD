@@ -108,7 +108,13 @@ https://jestjs.io/docs/getting-started
     unzip awscliv2.zip
     sudo ./aws/install
 3. 当然，你要保证 curl 和unzip 可以found，如果command not found，要安装。
+
     比如。如果你按照的是 ubuntu20.04 基本上自带了 curl命令，如果没有，自行apt安装。
+    
+    Update your Ubuntu box, run: sudo apt update && sudo apt upgrade
+    Next, install cURL, execute: sudo apt install curl
+    Verify install of curl on Ubuntu by running: curl --version
+        
         但是unzip这个命令正常情况下是不带的，要自己安装
         https://www.tecmint.com/install-zip-and-unzip-in-linux/
         -sudo apt install unzip
