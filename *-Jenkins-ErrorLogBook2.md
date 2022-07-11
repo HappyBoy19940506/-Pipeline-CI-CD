@@ -379,6 +379,8 @@ pipeline {
 }
 
 ```
+https://www.jenkins.io/doc/book/pipeline/syntax/#input
+https://www.youtube.com/watch?v=QD6vhbadRJs&t=444s
 ----------------------------------------------------
 ----------------------------------------------------
 # 17. when{...} Empty when closure, remove the property or add some content. @ line 10, column 13.
@@ -419,6 +421,7 @@ when {
             
 
 ```
+https://www.jenkins.io/doc/book/pipeline/syntax/#when
 ----------------------------------------------------
 ----------------------------------------------------
 # 1. 
