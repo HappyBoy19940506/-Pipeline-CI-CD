@@ -270,18 +270,26 @@ pipeline {
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 14. pipeline中 $docker stop --time=1 48030bf java.io.IOException: Failed to kill container '4803‘
 
 ## Resolved: 
 ```
+-pipeline中 最后无法结束container，以及删除container
+
+-在ssh的 terminal中也无法删除。 无法运行 stop kill 等命令，提示：Error response from daemon: Cannot kill container: 105: permission denied
+
+docker重大bug，要删除原有版本， 然后使用snap重新安装到 最新的 Docker version 20.10.14, build a224086349 这个版本才会解决。
 
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 15. ssh终端中 Error response from daemon: Cannot kill container: 105: permission denied
 
 ## Resolved: 
 ```
+docker重大bug，要删除原有版本， 然后使用snap重新安装到 最最新的 Docker version 20.10.14, build a224086349 这个版本才会解决。
+
+
 
 ```
 ----------------------------------------------------
