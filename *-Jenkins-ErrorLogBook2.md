@@ -53,7 +53,7 @@ https://jestjs.io/docs/getting-started
 
 ## Resolved: 
 ```
-1. 按照pipeline：aws steps插件，这样 syntax就会出现 withAWS{ }
+1. 安装pipeline：aws steps插件，这样 syntax就会出现 withAWS{ }
 2. 设置常规三个变量：
         AWS_S3_CREDENTIALS = "AWS-Credentials-Root-AccessKey"
         AWS_S3_REGION = "ap-southeast-2"
