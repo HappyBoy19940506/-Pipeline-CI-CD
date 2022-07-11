@@ -5,6 +5,7 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 ```
 ## Resolved: 
 ```
+方法一： 不推荐，只是降低了了文件的访问许可门槛，让张三李四都能访问。 安全隐患 + reboot会还原。
 just open terminal and type this command // 在运行docker的那个agent里面 ，给 docker daemon抬旗， 直接最高权限运行
 
 sudo chmod 666 /var/run/docker.sock
@@ -13,8 +14,28 @@ chmod 666 file/folder means that all users can read and write but cannot execute
 chmod 777 file/folder allows all actions for all users;
 chmod 744 file/folder allows only user (owner) to do all actions; group and other users are allowed only to read.
 
+
+方法二： 权限还是660，不提权，但是增加 对应的group以及 user。
+
+ - 创建的group （必须加起码一个user，不然 sudo groups不显示，只会提示 already exist）。加入user等操作，重启后不会消失
+ - 所以 permission denied的问题最好通过 groups解决，也规避了security risk。
+ - 一个程序，要么root访问，要么在其对应的groups里面的user可以访问 -660权限。
+
+  If you want to run docker as non-root user then you need to add it to the docker group.
+
+  Create the docker group if it does not exist
+  
+  $ sudo groupadd docker
+  
+  Add your user to the docker group.
+  
+  $ sudo usermod -aG docker $USER
+
+  记得 $reboot --重启ec2， groups操作要重启才能生效， 但是chmod操作立即生效。
 ```
 https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket
+
+
 
 
 # 2.   运行command权限不够要sudo， sudo了又要密码。我ssh连接的，哪来的密码？？
