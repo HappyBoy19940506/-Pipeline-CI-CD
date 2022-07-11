@@ -386,10 +386,37 @@ pipeline {
 ## Resolved: 
 ```
 when 中必须要有branch 'xxx'条件，否则会报错。
+*********   
 when {
                 beforeInput true.  
                 branch 'production' --必要项
+                environment name: 'DEPLOY_TO', value: 'production'
+                
             }
+ *********              
+ when {
+                allOf {
+                    branch 'production'
+                    environment name: 'DEPLOY_TO', value: 'production'
+                }
+            }
+*********               
+when {
+                branch 'production'
+                anyOf {
+                    environment name: 'DEPLOY_TO', value: 'production'
+                    environment name: 'DEPLOY_TO', value: 'staging'
+                }
+            }
+*********           
+when {
+                expression { BRANCH_NAME ==~ /(production|staging)/ }
+                anyOf {
+                    environment name: 'DEPLOY_TO', value: 'production'
+                    environment name: 'DEPLOY_TO', value: 'staging'
+                }
+            }
+            
 
 ```
 ----------------------------------------------------
