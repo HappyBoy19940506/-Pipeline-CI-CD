@@ -444,10 +444,24 @@ https://www.jenkins.io/doc/book/pipeline/syntax/#when
 https://www.youtube.com/watch?v=OChOtpK0fUE
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
-
+# 19. unzip awscliv2.zip报错 replace aws/THIRD_PARTY_LICENSES? [y]es, [n]o, [A]ll, [N]one, [r]ename:  NULL
+(EOF or read error, treating as "[N]one" ...)
+Archive:  awscliv2.zip
+replace aws/THIRD_PARTY_LICENSES? [y]es, [n]o, [A]ll, [N]one, [r]ename:  NULL
+(EOF or read error, treating as "[N]one" ...)
 ## Resolved: 
 ```
+-q  quiet mode (-qq => quieter)
+-o  overwrite files WITHOUT prompting  
+-f  freshen existing files, create none
+-n  never overwrite existing files 
+
+According to http://www.manpagez.com/man/1/unzip/ you can use the -o option to overwrite files:
+
+unzip -o /path/to/archive.zip
+
+Note that -o, like most of unzip's options, has to go before the archive name.
+
 
 ```
 --------------------------------------------------------------------------------------------------------
