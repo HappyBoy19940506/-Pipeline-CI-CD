@@ -304,18 +304,92 @@ docker重大bug，要删除原有版本， 然后使用snap重新安装到 最�
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 16.
-
+# 16. Input in Jenkins
 ## Resolved: 
 ```
+1.  先说说层级  pipeline{}-  envirnoment{} agent{} stages{}post{} -- 在stages{}里面: stage{} stage{}... --在stage{}里面 steps{ echo ..} input{}
+   -所以说，input{} 所处的层级时和 steps一样的层级，在 stage{}的下面。
+    *** 并且 input{} 标签 和 when{}一样，不能单独存在于stage{}里，stage{}里面必须要有step{}
+2.  此种 input写法 有什么问题？
+    pipeline {
+    agent any
+    stages {
+        stage('input') {
+        steps {
+        sh '''
+          hostname
+          cat /etc/redhat-release
+        '''
+      }
+        input {
+         message 'ready to go?'
+        }
+    }
+  }
+}
+
+---> input 在 agent any中 执行，占用一个executor名额，并一直在waiting，这样后面有任务过来会 堵塞。
+
+3。 所以 这样写比较好： 让 input 在agent none中执行。 然后在 stage阶段 再指定具体agent，这样的话pipeline阶段不指定agent，就不会产生堵塞，在你input{}之后才会执行
+对应的agent. 补充一点： stage里面 的input 和 when，无论写在step前后，都是在step之前执行的。
+
+    pipeline {
+    agent none
+    stages {
+        stage('input') {
+        agent any
+        steps {
+        sh '''
+          hostname
+          cat /etc/redhat-release
+        '''
+      }
+        input {
+         message 'ready to go?'
+        }
+    }
+  }
+}
+
+4. 和 when{}一起配合使用， when+input +steps
+ - when 需要写在input前面，  -when 中必须要有branch 'xxx'条件，否则会报错。
+- Example 21. beforeInput
+pipeline {
+    agent none
+    stages {
+        stage('Example Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Example Deploy') {
+            when {
+                beforeInput true
+                branch 'production'
+            }
+            input {
+                message "Deploy to production?"
+                id "simple-input"
+            }
+            steps {
+                echo 'Deploying'
+            }
+        }
+    }
+}
 
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
-
+# 17. when{...} Empty when closure, remove the property or add some content. @ line 10, column 13.
+              
 ## Resolved: 
 ```
+when 中必须要有branch 'xxx'条件，否则会报错。
+when {
+                beforeInput true.  
+                branch 'production' --必要项
+            }
 
 ```
 ----------------------------------------------------
