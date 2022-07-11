@@ -272,6 +272,7 @@ pipeline {
  -但是创建的group （必须加起码一个user，不然 sudo groups不显示，只会提示 already exist），加入user等操作，重启后不会消失
  -所以 permission denied的问题最好通过 groups解决，也规避了security risk。
  - 一个程序，要么root访问，要么在其对应的groups里面的user可以访问 -660权限。
+ - 记得 $reboot --重启ec2， groups操作要重启才能生效， 但是chmod操作立即生效。
 
 ```
 ----------------------------------------------------
