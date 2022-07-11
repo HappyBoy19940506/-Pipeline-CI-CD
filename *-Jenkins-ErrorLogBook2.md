@@ -512,10 +512,23 @@ Note that -o, like most of unzip's options, has to go before the archive name.
 https://www.jenkins.io/blog/2018/07/02/whats-new-declarative-piepline-13x-sequential-stages/#running-multiple-stages-with-the-same-agent-or-environment-or-options
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 21. when{condition}老是返回false导致skipped stage
 
 ## Resolved: 
 ```
-
+                    when {
+                       allOf {
+                             branch 'main' //问题所在
+                             environment name: 'PROJECT_ENV', value: 'Prod'
+                             environment name: 'PROJECT_NAME', value: "${PROJECT_NAME}" 
+                            }
+                         beforeInput true  //在input block之前执行
+                    }
+                    
+ 问题出在 branch‘main’上。
+ branch
+    Execute the stage when the branch being built matches the branch pattern (ANT style path glob) given, for example: when { branch 'master' }. Note   that this only works on a multibranch Pipeline.
+    -只支持 多branch 的repo，我的repo只有一个branch，所以怎么读都爆错。正常情况下，肯定不止一个branch。
+    
 ```
 ----------------------------------------------------
