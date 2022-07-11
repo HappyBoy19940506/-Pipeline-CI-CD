@@ -176,26 +176,83 @@ sudo snap install docker
 
 ```
 --------------------------------------------------------------------------------------------------------
-# 1. 
+# 10.  agent block也可以用在 单独的stage中， 比如
 
 ## Resolved: 
 ```
+--放在 stage 和 step的 中间。
 
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'gradle:6.7-jdk11'
+                    // Run the container on the node specified at the
+                    // top-level of the Pipeline, in the same workspace,
+                    // rather than on a new node entirely:
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'gradle --version'
+            }
+        }
+    }
+}
+
+参考： https://www.jenkins.io/doc/book/pipeline/docker/
 ```
 --------------------------------------------------------------------------------------------------------
-# 1. 
+# 11. 通过#10的思路，还可以在不同stage中运行不同docker的容器：
 
 ## Resolved: 
 ```
-
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent none
+    stages {
+        stage('Back-end') {
+            agent {
+                docker { image 'maven:3.8.1-adoptopenjdk-11' }
+            }
+            steps {
+                sh 'mvn --version'
+            }
+        }
+        stage('Front-end') {
+            agent {
+                docker { image 'node:16.13.1-alpine' }
+            }
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 12. 通过#10的思路，还可以在agent运行 dockerfile而不是官方image
 
 ## Resolved: 
 ```
+https://www.youtube.com/watch?v=Pi2kJ2RJS50
 
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
+    }
+}
 ```
 ----------------------------------------------------
 ----------------------------------------------------
