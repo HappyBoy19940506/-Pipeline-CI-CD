@@ -97,7 +97,25 @@ https://jestjs.io/docs/getting-started
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 5. 按照AWS CLI 2
+
+## Resolved: 
+```
+注意， jr课件上的aws安装是错的，会装成 版本1 。我们应该装 版本2
+
+1. 装 Linux x86（64bit） 很低概率装arm，x86占绝大部分市场
+2.  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+3. 当然，你要保证 curl 和unzip 可以found，如果command not found，要安装。
+    比如。
+
+
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+```
+----------------------------------------------------
+----------------------------------------------------
+# 6. 
 
 ## Resolved: 
 ```
@@ -105,19 +123,11 @@ https://jestjs.io/docs/getting-started
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 7. Jenkins  Email Notification报错：Not sent to the following valid addresses: 39xxxx196@qq.com 
 
 ## Resolved: 
 ```
-
-```
-----------------------------------------------------
-----------------------------------------------------
-# 1. 
-
-## Resolved: 
-```
-
+收件人 和发件人 必须都处于 同一个aws account下的同一个 region的 identity 列表上 ，并且 verified。
 ```
 ----------------------------------------------------
 ----------------------------------------------------
