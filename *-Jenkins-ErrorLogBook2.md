@@ -160,10 +160,19 @@ sudo apt autoremove
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 1. 
+# 9. how to install Docker on Ubuntu
 
 ## Resolved: 
 ```
+https://snapcraft.io/install/docker/ubuntu
+
+这个snap方法好，版本更新问题。
+
+sudo apt update
+sudo apt install snapd
+
+
+sudo snap install docker
 
 ```
 --------------------------------------------------------------------------------------------------------
