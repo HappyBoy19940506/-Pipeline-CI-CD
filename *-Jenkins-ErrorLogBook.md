@@ -30,6 +30,8 @@ chmod 744 file/folder allows only user (owner) to do all actions; group and othe
   Add your user to the docker group.
   
   $ sudo usermod -aG docker $USER
+  -这里的$USER, 好巧不巧的是，你Jenkins的agent username是 ubuntu，而你ssh练的时候正好也是 ubuntu，所以uubuntu就可以用docker了。如果你用比如 Jenkins-local的话，
+  那你需要把 “Jenkins” 加入到group中！ 
 
   记得 $reboot --重启ec2， groups操作要重启才能生效， 但是chmod操作立即生效。
 ```
