@@ -601,7 +601,7 @@ but when there's a space, you can only use the latter syntax.
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 24.when{} 的一些用法和注意事项，when的意思就是可执行or不执行，没when的stage就一定要执行，所以记住，when不能用在必需的stage上，只能用在可有可无的stage上。
+# 24.when{} 的一些用法和注意事项，when的意思就是可执行or不执行，没when的stage就一定要执行，所以记住，when不能用在必需的stage上，只能用在可有可无的stage上，条件通过就run，不通过也不报错，只是skip，所以千万不能用在 必要的stage上
 
 ## Resolved: 
 
