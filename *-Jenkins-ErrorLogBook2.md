@@ -612,7 +612,7 @@ but when there's a space, you can only use the latter syntax.
 
 3. when 和input 同时用： when中可以添加 beforeInput :true来决定顺序， input是用来pause然后让人决定继续还是放弃的。
   - 在input之前，when中判断是否应该在此环境下 提出input让人来决定
-  - 在input之后  input让abort就 直接整条ppl放弃，如果proceed，那就开启when判断 再决定此ppl要不要执行。
+  - 在input之后  input让abort就 直接整条ppl放弃，如果proceed，那就开启when判断 再决定此stage要不要执行。
   - input中也可以带parameters，并且在when中做判断。详见#25
 
     when {
