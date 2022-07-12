@@ -601,28 +601,55 @@ but when there's a space, you can only use the latter syntax.
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 22.1
+# 24.when{} 的一些用法和注意事项，when的意思就是可执行or不执行，没when的stage就一定要执行。
 
 ## Resolved: 
 
 ```
+1. 可以用来skip一些stage - 在when中写条件，如果满足，就执行该stage，否则跳过，但是并不影响后面的stage运行，比如when条件是prod，就执行stage中的cd
+
+2. 可以用来做一些 parallel的stage，比如同时传向2个bucket，或者2个平台，互相之间不影响。 你可以在when中判断 输入的parameters来决定是否在此stage中执行还是跳过
+
+3. when 和input 同时用： when中可以添加 beforeInput :true来决定顺序， input是用来pause然后让人决定继续还是放弃的。
+  - 在input之前，when中判断是否应该在此环境下 提出input让人来决定
+  - 在input之后  input让abort就 直接整条ppl放弃，如果proceed，那就开启when判断 再决定此ppl要不要执行。
+  - input中也可以带parameters，并且在when中做判断。详见#25
+
+    when {
+        allOf {                        
+        // branch 'main'  ---- Only Support Multibranch Pipeline
+        environment name: 'PROJECT_ENV', value: 'Prod'  -- pipeline中定义的env
+        environment name: 'PROJECT_NAME', value: "${PROJECT_NAME}" -- pipeline中定义的env
+        expression{ params['Which Environment are you going to deploy?'] == 'Production' } -- pipeline中定义的params,expression{ }判断是否为true
+        
+        environment name:'Which Environment are you going to deploy? , value:‘Production'  --这个很特殊，是input定义的params，但是这里必须用envionment                            的syntax，非常诡异
+        
+        }
+        beforeInput true 
+        }
+                        
 ```
 ----------------------------------------------------
 ----------------------------------------------------
-# 22.1
+# 25.input { } 打断整条ppl，等待输入，一定配合timeout使用
 
 ## Resolved: 
 
+```         options{
+            //timeout
+            }
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                    booleanParam defaultValue: true, description: 'I\'ve checked all resources are setting well.', name: 'Check time'
+                     choice choices: ['Production', 'Staging'], description: "Production", name: 'Which'                  
+                }
 ```
-```
+### 这里特别要小心的是， 这个parameters选项，虽然叫parameters，但是要想在input{}外引用，必须用env方式， 即为 ${env.PRESON} ${env.Which} 如果在when{}中引用，则为environment name:'Which Environment are you going to deploy? , value:‘Production'  ,且 ${env.PRESON}中name不能带space，不能想parameters那样写成['sss']的形式
+
+
+
 ----------------------------------------------------
 ----------------------------------------------------
-# 22.1
-
-## Resolved: 
-
-```
-```
----------------------------------------------------
-----------------------------------------------------
-
