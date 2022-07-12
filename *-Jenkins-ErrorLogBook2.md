@@ -528,7 +528,7 @@ https://www.jenkins.io/blog/2018/07/02/whats-new-declarative-piepline-13x-sequen
  问题出在 branch‘main’上。
  branch
     Execute the stage when the branch being built matches the branch pattern (ANT style path glob) given, for example: when { branch 'master' }. Note   that this only works on a multibranch Pipeline.
-    -只支持 多branch 的pipeline，我的pipeline只有一个branch，所以怎么读都爆错。 要用这个必须 是 multibranch pipeline - blue ocean
+    -只支持 多branch 的pipeline，我的pipeline只监听一个branch，所以怎么读都爆错。 要用这个必须 是 multibranch pipeline - blue ocean
     
 ```
 ----------------------------------------------------
