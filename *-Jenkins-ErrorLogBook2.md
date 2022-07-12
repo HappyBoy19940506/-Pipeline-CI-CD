@@ -532,3 +532,97 @@ https://www.jenkins.io/blog/2018/07/02/whats-new-declarative-piepline-13x-sequen
     
 ```
 ----------------------------------------------------
+----------------------------------------------------
+# 22. script{ def params = 'ss'} 传不出去。 在script外面 无法调用。
+
+## Resolved: 
+
+```
+pipeline {
+    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                script{
+                    def HAHA = true
+                    echo "${HAHA}"
+                }
+                
+                
+            }
+        }
+    }
+}
+------ 可以echo，因为在script里面
+pipeline {
+ agent any
+    stages {
+        stage('Hello') {
+            steps {
+                script{
+                    def HAHA = true
+                }
+                   echo "${HAHA}"
+                
+            }
+        }
+    }
+}
+----echo不出来， haha读不到。
+
+```
+----------------------------------------------------
+----------------------------------------------------
+# 23. how to call parameters name with whitespace,like name: 'How are you doing?'
+
+## Resolved: 
+
+```
+You can use params['IP Address'].
+
+Think of params as a Map containing a key 'IP Address'. 
+
+If the key didn't have a space, then you could use 
+
+params.IPAddress 
+or 
+
+params['IPAddress'], 
+
+but when there's a space, you can only use the latter syntax.
+
+- 注意点1 params 不是 param，别老是少个s！！！
+- 注意点2 空格的形式是 params['string'] params后面没有.  不是params.NAME的形式
+- 注意点3 在when{}进行判断时，environment判断是：  environment name: 'PROJECT_NAME', value: "${PROJECT_NAME}"
+                           而parameters的判断是 : expression{ params['Is a back-up bucket considered ?'] == true }
+- 注意点4 判断时，注意是 == 而不是 = ！！！！
+- 注意点5 判断的值 除了true和false 别的都要加 引号！
+
+```
+----------------------------------------------------
+----------------------------------------------------
+# 22.1
+
+## Resolved: 
+
+```
+```
+----------------------------------------------------
+----------------------------------------------------
+# 22.1
+
+## Resolved: 
+
+```
+```
+----------------------------------------------------
+----------------------------------------------------
+# 22.1
+
+## Resolved: 
+
+```
+```
+---------------------------------------------------
+----------------------------------------------------
+
